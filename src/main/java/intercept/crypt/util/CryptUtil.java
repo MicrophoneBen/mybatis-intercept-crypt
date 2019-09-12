@@ -16,7 +16,7 @@ import java.util.Set;
 /**
  * 加解密工具类
  *
- * @author kamjin1996
+ * @author tuosen
  * @date 2019-07-30 12:49
  */
 @Slf4j
@@ -34,10 +34,6 @@ public class CryptUtil {
 
     private static final Set<Class> IGNORE_CLASS = new HashSet<>();
 
-    private static String secretKey;
-
-    private static Boolean enable;
-
     static {
         // initIgnoreClass
         IGNORE_CLASS.add(Byte.class);
@@ -49,9 +45,14 @@ public class CryptUtil {
         IGNORE_CLASS.add(Boolean.class);
         IGNORE_CLASS.add(Character.class);
 
-        //initProp
-        secretKey = Dbcrypt.getDbCryptSecretkey();
-        enable = Dbcrypt.getDbCryptEnable();
+    }
+
+    private static String getSecretkey() {
+        return Dbcrypt.getDbCryptSecretkey();
+    }
+
+    private static boolean getEnable() {
+        return Dbcrypt.getDbCryptEnable();
     }
 
     public static boolean inIgnoreClass(Class cls) {
@@ -59,11 +60,11 @@ public class CryptUtil {
     }
 
     public static String encrypt(String sSrc) {
-        return encrypt(sSrc, enable);
+        return encrypt(sSrc, getEnable());
     }
 
     public static String decrypt(String sSrc) {
-        return decrypt(sSrc, enable);
+        return decrypt(sSrc, getEnable());
     }
 
     /**
@@ -77,7 +78,7 @@ public class CryptUtil {
         if (!enable) {
             return sSrc;
         }
-        String sKey = secretKey;
+        String sKey = getSecretkey();
         checkKey(sKey);
 
         try {
@@ -115,7 +116,7 @@ public class CryptUtil {
         if (!enable) {
             return sSrc;
         }
-        String sKey = secretKey;
+        String sKey = getSecretkey();
         checkKey(sKey);
 
         try {
@@ -148,7 +149,9 @@ public class CryptUtil {
         }
     }
 
-    /** 检查SecretKey */
+    /**
+     * 检查SecretKey
+     */
     private static void checkKey(String sKey) {
         if (sKey == null) {
             throw new RuntimeException(KEY_NOT_BE_NULL);
