@@ -16,7 +16,7 @@ import java.util.Set;
 /**
  * 加解密工具类
  *
- * @author kamjin1996
+ * @author tuosen
  * @date 2019-07-30 12:49
  */
 @Slf4j
@@ -34,6 +34,10 @@ public class CryptUtil {
 
     private static final Set<Class> IGNORE_CLASS = new HashSet<>();
 
+    private static String secretKey = null;
+
+    private static boolean enable = false;
+
     static {
         // initIgnoreClass
         IGNORE_CLASS.add(Byte.class);
@@ -48,11 +52,21 @@ public class CryptUtil {
     }
 
     private static String getSecretkey() {
-        return Dbcrypt.getDbCryptSecretkey();
+        try {
+            secretKey = Dbcrypt.getDbCryptSecretkey();
+        } catch (IllegalArgumentException e) {
+            //忽略
+        }
+        return secretKey;
     }
 
     private static boolean getEnable() {
-        return Dbcrypt.getDbCryptEnable();
+        try {
+            enable = Dbcrypt.getDbCryptEnable();
+        } catch (IllegalArgumentException e) {
+            //忽略
+        }
+        return enable;
     }
 
     public static boolean inIgnoreClass(Class cls) {
