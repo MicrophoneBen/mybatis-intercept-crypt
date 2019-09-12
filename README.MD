@@ -17,6 +17,7 @@ dbcrypt.enable=true
 
 二、将属性注给配置类,这里采用了DataSource属性注入类似的方式;
 在项目中新建配置类:
+
 @Configuration
 public class CryptInterceptConfig {
 
@@ -29,6 +30,7 @@ public class CryptInterceptConfig {
 }
 
 三、在项目的mybatis.xml中配置当前插件：
+
 <plugins>
         <plugin interceptor="intercept.crypt.CryptInterceptor"/>
 </plugins>
