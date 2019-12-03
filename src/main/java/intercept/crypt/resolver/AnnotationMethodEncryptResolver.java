@@ -19,15 +19,10 @@ public class AnnotationMethodEncryptResolver implements MethodEncryptResolver {
 
     @Override
     public Object processEncrypt(Object param) {
-        Map map = (Map) param;
-        methodAnnotationEncryptParameterList.forEach(
-                item ->
-                        map.computeIfPresent(
-                                item.getParamName(),
-                                (key, oldValue) ->
-                                        CryptHandlerFactory.getCryptHandler(
-                                                        oldValue, item.getCryptField())
-                                                .encrypt(oldValue, item.getCryptField())));
+        Map map = (Map)param;
+        methodAnnotationEncryptParameterList
+            .forEach(item -> map.computeIfPresent(item.getParamName(), (key, oldValue) -> CryptHandlerFactory
+                .getCryptHandler(oldValue, item.getCryptField()).encrypt(oldValue, item.getCryptField())));
         return param;
     }
 }

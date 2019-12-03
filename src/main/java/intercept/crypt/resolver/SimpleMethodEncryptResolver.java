@@ -18,7 +18,7 @@ public class SimpleMethodEncryptResolver implements MethodEncryptResolver {
 
     @Override
     public Object processEncrypt(Object param) {
-        return CryptHandlerFactory.getCryptHandler(param, encryptParameter.getCryptField())
-                .encrypt(param, encryptParameter.getCryptField());
+        return CryptHandlerFactory.getCryptHandler(param, encryptParameter.getCryptField()).encrypt(param,
+            encryptParameter.getCryptField());
     }
 }

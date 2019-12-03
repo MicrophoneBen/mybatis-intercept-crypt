@@ -1,14 +1,17 @@
 package intercept.crypt.util;
 
 import intercept.crypt.config.Dbcrypt;
+import intercept.crypt.exception.InterceptRuntimeException;
 import lombok.Data;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.codec.binary.Base64;
+import org.apache.commons.lang3.StringUtils;
 
-import javax.crypto.Cipher;
-import javax.crypto.KeyGenerator;
-import javax.crypto.SecretKey;
+import javax.crypto.*;
 import javax.crypto.spec.SecretKeySpec;
+import java.io.UnsupportedEncodingException;
+import java.security.InvalidKeyException;
+import java.security.NoSuchAlgorithmException;
 import java.security.SecureRandom;
 import java.util.HashSet;
 import java.util.Set;
@@ -16,11 +19,12 @@ import java.util.Set;
 /**
  * 加解密工具类
  *
- * @author tuosen
+ * @author kamjin1996
  * @date 2019-07-30 12:49
  */
 @Slf4j
 @Data
+@SuppressWarnings("all")
 public class CryptUtil {
 
     private static final String CRYPT_WAY = "AES";
@@ -28,8 +32,10 @@ public class CryptUtil {
     private static final String BYTE_CONTROL = "utf-8";
     private static final int STANDARD_SUPPORT = 192; // 加密标准支持：128/192/256 对应key长度分别为16/24/32
     private static final int KEY_LENGTH = 24;
+
     private static final String KEY_NOT_BE_NULL = "KEY不能为空";
     private static final String KEY_LENGTH_NOT_SUPPORT = "KEY长度不符合";
+
     private static final String SECURE_RANDOM_INSTANCE_NAME = "SHA1PRNG";
 
     private static final Set<Class> IGNORE_CLASS = new HashSet<>();
@@ -53,18 +59,22 @@ public class CryptUtil {
 
     private static String getSecretkey() {
         try {
-            secretKey = Dbcrypt.getDbCryptSecretkey();
+            if (StringUtils.isBlank(secretKey)) {
+                secretKey = Dbcrypt.getDbCryptSecretkey();
+            }
         } catch (IllegalArgumentException e) {
-            //忽略
+            // 忽略
         }
         return secretKey;
     }
 
-    private static boolean getEnable() {
+    private static boolean isEnable() {
         try {
-            enable = Dbcrypt.getDbCryptEnable();
+            if (!enable) {
+                enable = Dbcrypt.getDbCryptEnable();
+            }
         } catch (IllegalArgumentException e) {
-            //忽略
+            // 忽略
         }
         return enable;
     }
@@ -74,11 +84,21 @@ public class CryptUtil {
     }
 
     public static String encrypt(String sSrc) {
-        return encrypt(sSrc, getEnable());
+        try {
+            return isEnable() ? doEncrypt(sSrc) : sSrc;
+        } catch (Exception e) {
+            log.info("encrypt str failed,rollback to source str");
+        }
+        return sSrc;
     }
 
     public static String decrypt(String sSrc) {
-        return decrypt(sSrc, getEnable());
+        try {
+            return isEnable() ? doDecrypt(sSrc) : sSrc;
+        } catch (Exception ex) {
+            log.info("decrypt str failed,rollback to source str");
+        }
+        return sSrc;
     }
 
     /**
@@ -88,35 +108,27 @@ public class CryptUtil {
      * @param enable
      * @return
      */
-    private static String encrypt(String sSrc, Boolean enable) {
-        if (!enable) {
-            return sSrc;
-        }
+    private static String doEncrypt(String sSrc) throws NoSuchAlgorithmException, NoSuchPaddingException,
+        InvalidKeyException, UnsupportedEncodingException, BadPaddingException, IllegalBlockSizeException {
         String sKey = getSecretkey();
         checkKey(sKey);
+        KeyGenerator kgen = KeyGenerator.getInstance(CRYPT_WAY);
 
-        try {
-            KeyGenerator kgen = KeyGenerator.getInstance(CRYPT_WAY);
+        SecureRandom secureRandom = SecureRandom.getInstance(SECURE_RANDOM_INSTANCE_NAME);
+        secureRandom.setSeed(sKey.getBytes());
+        kgen.init(STANDARD_SUPPORT, secureRandom);
 
-            /* linux 要加这三行代码*/
-            SecureRandom secureRandom = SecureRandom.getInstance(SECURE_RANDOM_INSTANCE_NAME);
-            secureRandom.setSeed(sKey.getBytes());
-            kgen.init(STANDARD_SUPPORT, secureRandom);
+        SecretKey secretKey = kgen.generateKey();
+        byte[] enCodeFormat = secretKey.getEncoded();
+        SecretKeySpec skeySpec = new SecretKeySpec(enCodeFormat, CRYPT_WAY);
 
-            SecretKey secretKey = kgen.generateKey();
-            byte[] enCodeFormat = secretKey.getEncoded();
-            SecretKeySpec skeySpec = new SecretKeySpec(enCodeFormat, CRYPT_WAY);
+        Cipher cipher = Cipher.getInstance(ALGORITHM_MODE_COMPLEMENT);
+        cipher.init(Cipher.ENCRYPT_MODE, skeySpec);
+        byte[] encrypted = cipher.doFinal(sSrc.getBytes(BYTE_CONTROL));
 
-            Cipher cipher = Cipher.getInstance(ALGORITHM_MODE_COMPLEMENT);
-            cipher.init(Cipher.ENCRYPT_MODE, skeySpec);
-            byte[] encrypted = cipher.doFinal(sSrc.getBytes(BYTE_CONTROL));
+        // 此处使用BASE64做转码功能，能起到2次加密的作用。
+        return new Base64().encodeToString(encrypted);
 
-            // 此处使用BASE64做转码功能，能起到2次加密的作用。
-            return new Base64().encodeToString(encrypted);
-        } catch (Exception e) {
-            log.info("encrypt str failed,rollback to source str");
-            return sSrc;
-        }
     }
 
     /**
@@ -126,41 +138,25 @@ public class CryptUtil {
      * @param enable
      * @return
      */
-    private static String decrypt(String sSrc, Boolean enable) {
-        if (!enable) {
-            return sSrc;
-        }
+    private static String doDecrypt(String sSrc) throws NoSuchAlgorithmException, NoSuchPaddingException,
+        InvalidKeyException, BadPaddingException, IllegalBlockSizeException, UnsupportedEncodingException {
+
         String sKey = getSecretkey();
         checkKey(sKey);
 
-        try {
-            KeyGenerator kgen = KeyGenerator.getInstance(CRYPT_WAY);
-            /* linux 要加这三行代码*/
-            SecureRandom secureRandom = SecureRandom.getInstance(SECURE_RANDOM_INSTANCE_NAME);
-            secureRandom.setSeed(sKey.getBytes());
-            kgen.init(STANDARD_SUPPORT, secureRandom);
+        KeyGenerator kgen = KeyGenerator.getInstance(CRYPT_WAY);
+        SecureRandom secureRandom = SecureRandom.getInstance(SECURE_RANDOM_INSTANCE_NAME);
+        secureRandom.setSeed(sKey.getBytes());
+        kgen.init(STANDARD_SUPPORT, secureRandom);
 
-            // kgen.init(STANDARD_SUPPORT, new SecureRandom(sKey.getBytes()));
-            SecretKey secretKey = kgen.generateKey();
-            byte[] enCodeFormat = secretKey.getEncoded();
-            SecretKeySpec skeySpec = new SecretKeySpec(enCodeFormat, CRYPT_WAY);
+        // kgen.init(STANDARD_SUPPORT, new SecureRandom(sKey.getBytes()));
+        SecretKeySpec skeySpec = new SecretKeySpec(kgen.generateKey().getEncoded(), CRYPT_WAY);
 
-            Cipher cipher = Cipher.getInstance(ALGORITHM_MODE_COMPLEMENT);
-            cipher.init(Cipher.DECRYPT_MODE, skeySpec);
-            // 先用base64解密
-            byte[] encrypted1 = new Base64().decode(sSrc);
-            try {
-                byte[] original = cipher.doFinal(encrypted1);
-                String originalString = new String(original, BYTE_CONTROL);
-                return originalString;
-            } catch (Exception e) {
-                log.error("decrypt str failed,rollback to source str");
-                return sSrc;
-            }
-        } catch (Exception ex) {
-            log.info("decrypt str failed,rollback to source str");
-            return sSrc;
-        }
+        Cipher cipher = Cipher.getInstance(ALGORITHM_MODE_COMPLEMENT);
+        cipher.init(Cipher.DECRYPT_MODE, skeySpec);
+
+        byte[] original = cipher.doFinal(new Base64().decode(sSrc));
+        return new String(original, BYTE_CONTROL);
     }
 
     /**
@@ -168,10 +164,10 @@ public class CryptUtil {
      */
     private static void checkKey(String sKey) {
         if (sKey == null) {
-            throw new RuntimeException(KEY_NOT_BE_NULL);
+            throw new InterceptRuntimeException(KEY_NOT_BE_NULL);
         }
         if (sKey.length() != KEY_LENGTH) {
-            throw new RuntimeException(KEY_LENGTH_NOT_SUPPORT);
+            throw new InterceptRuntimeException(KEY_LENGTH_NOT_SUPPORT);
         }
     }
 }

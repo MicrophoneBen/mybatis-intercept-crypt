@@ -7,6 +7,13 @@ package intercept.crypt.executor;
  * @date 2019-08-01 13:24
  */
 public enum CryptType {
+    /**
+     * 普通
+     */
     COMMON,
+
+    /**
+     * 特殊
+     */
     SPECIAL
 }

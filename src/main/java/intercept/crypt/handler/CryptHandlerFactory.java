@@ -13,6 +13,7 @@ import java.util.Map;
  * @author kamjin1996
  * @date 2019-07-31 13:02
  */
+@SuppressWarnings("all")
 public class CryptHandlerFactory {
 
     private static final CryptHandler STRING_HANDLER = new StringCryptHandler();

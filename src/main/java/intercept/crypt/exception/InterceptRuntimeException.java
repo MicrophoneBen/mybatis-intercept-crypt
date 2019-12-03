@@ -13,4 +13,5 @@ public class InterceptRuntimeException extends RuntimeException {
     public InterceptRuntimeException(String message) {
         super(message);
     }
+
 }

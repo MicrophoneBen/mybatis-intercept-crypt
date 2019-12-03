@@ -4,9 +4,10 @@ import intercept.crypt.util.CryptUtil;
 import lombok.extern.slf4j.Slf4j;
 
 /**
- * @auther: kamjin1996
- * @date: 14:13 2019-07-31
- * @description: 普通加密解密执行者
+ * 普通加解密执行者
+ *
+ * @author kamjin1996
+ * @date 2019-08-01 11:40
  */
 @Slf4j
 public class CommonCryptExecutor implements CryptExecutor {

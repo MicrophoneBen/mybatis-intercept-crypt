@@ -19,11 +19,8 @@ public class ListCryptHandler implements CryptHandler<List> {
             return list;
         }
         return list.stream()
-                .map(
-                        item ->
-                                CryptHandlerFactory.getCryptHandler(item, cryptField)
-                                        .encrypt(item, cryptField))
-                .collect(Collectors.toList());
+            .map(item -> CryptHandlerFactory.getCryptHandler(item, cryptField).encrypt(item, cryptField))
+            .collect(Collectors.toList());
     }
 
     @Override
@@ -32,11 +29,8 @@ public class ListCryptHandler implements CryptHandler<List> {
             return param;
         }
         return param.stream()
-                .map(
-                        item ->
-                                CryptHandlerFactory.getCryptHandler(item, cryptField)
-                                        .decrypt(item, cryptField))
-                .collect(Collectors.toList());
+            .map(item -> CryptHandlerFactory.getCryptHandler(item, cryptField).decrypt(item, cryptField))
+            .collect(Collectors.toList());
     }
 
     private boolean needCrypt(List list) {

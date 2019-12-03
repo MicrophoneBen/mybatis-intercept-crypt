@@ -1,9 +1,10 @@
 package intercept.crypt.executor;
 
 /**
- * @auther: kamjin1996
- * @date: 14:15 2019-07-31
- * @description: 特殊加解密执行者
+ * 特殊加密执行者
+ *
+ * @author kamjin1996
+ * @date 2019-08-01 13:24
  */
 public class SpecialCryptExecutor implements CryptExecutor {
 

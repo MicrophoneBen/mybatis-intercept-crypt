@@ -13,9 +13,10 @@ import java.util.Objects;
 import java.util.Properties;
 
 /**
- * @auther: tuosen
- * @date: 10:22 2019-08-01
- * @description: 不依赖spring, 配置参数载入
+ * 配置参数载入
+ *
+ * @author kamjin1996
+ * @date 2019-07-30 12:49
  */
 @Slf4j
 public class ConfigInit {

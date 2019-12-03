@@ -18,5 +18,5 @@ class MethodAnnotationEncryptParameter {
 
     private String paramName;
     private CryptField cryptField;
-    private Class cls;
+    private Class<?> cls;
 }

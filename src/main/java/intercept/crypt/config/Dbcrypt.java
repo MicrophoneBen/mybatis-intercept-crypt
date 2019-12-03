@@ -3,9 +3,10 @@ package intercept.crypt.config;
 import java.util.Objects;
 
 /**
+ * 数据库加密配置
+ *
  * @auther: kamjin1996
  * @date: 10:22 2019-09-12
- * @description: 数据库加密
  */
 public class Dbcrypt {
 
@@ -13,22 +14,24 @@ public class Dbcrypt {
 
     private static Boolean dbCryptEnable;
 
-    public static String getDbCryptSecretkey(){
-        if(Objects.isNull(dbCryptSecretkey)){
-            throw new IllegalArgumentException("Dbcrypt bean not initialize,maybe dbcrypt config not configuration...");
+    private static final String NOT_INITIALIZATION_MSG =
+        "Dbcrypt bean not initialize,maybe dbcrypt config not configuration...";
+
+    public static String getDbCryptSecretkey() {
+        if (Objects.isNull(dbCryptSecretkey)) {
+            throw new IllegalArgumentException(NOT_INITIALIZATION_MSG);
         }
         return dbCryptSecretkey;
     }
 
-    public static Boolean getDbCryptEnable(){
-        if(Objects.isNull(dbCryptEnable)){
-            throw new IllegalArgumentException("Dbcrypt bean not initialize,maybe dbcrypt config not configuration...");
+    public static Boolean getDbCryptEnable() {
+        if (Objects.isNull(dbCryptEnable)) {
+            throw new IllegalArgumentException(NOT_INITIALIZATION_MSG);
         }
         return dbCryptEnable;
     }
 
-    public Dbcrypt() {
-    }
+    public Dbcrypt() {}
 
     public void setSecretkey(String secretkey) {
         dbCryptSecretkey = secretkey;
