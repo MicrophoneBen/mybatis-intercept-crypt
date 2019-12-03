@@ -29,9 +29,9 @@ public class CryptInterceptConfig {
 
 三、在项目的mybatis.xml中配置当前插件：
 
-···<plugins>
-        <plugin interceptor="intercept.crypt.CryptInterceptor"/>
-</plugins>···
+&lt;plugins&gt;
+      &lt;plugin interceptor="intercept.crypt.CryptInterceptor"/&gt;
+&lt;/plugins&gt;
 
 四、在需要加密的字段上注解@CryptField，也支持在mapper入参前注解@CryptField
 
