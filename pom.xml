@@ -4,9 +4,9 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.timevale</groupId>
-    <artifactId>mybatis-intercept</artifactId>
-    <version>1.0.2-SNAPSHOT</version>
+    <groupId>github.io.kamjin1996</groupId>
+    <artifactId>mybatis-intercept-crypt</artifactId>
+    <version>1.0</version>
 
     <build>
         <plugins>
