@@ -5,7 +5,7 @@ import java.util.Objects;
 /**
  * 数据库加密配置
  *
- * @aother kamjin1996
+ * @auther kamjin1996
  */
 public class Dbcrypt {
 
