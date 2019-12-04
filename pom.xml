@@ -59,4 +59,35 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
     </properties>
+
+    <!--sonatype配置-->
+    <name>mybatis-intercept-crypt</name>
+    <description>a project about mybatis-intercept-crypt</description>
+    <url>https://github.com/kamjin1996/mybatis-intercept-crypt</url>
+    <licenses>
+        <license>
+            <name>The ApacheSoftware License, Version 2.0</name>
+            <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+            <distribution>repo</distribution>
+        </license>
+    </licenses>
+    <scm>
+        <tag>master</tag>
+        <url>https://github.com/kamjin1996/mybatis-intercept-crypt.git</url>
+        <connection>scm:git:https://github.com/kamjin1996/mybatis-intercept-crypt.git</connection>
+        <developerConnection>scm:git:https://github.com/kamjin1996/mybatis-intercept-crypt.git</developerConnection>
+    </scm>
+    <developers>
+        <developer>
+            <name>kamjin</name>
+            <email>kamjin1996@163.com</email>
+            <organization>kamjin</organization>
+        </developer>
+    </developers>
+
+    <parent>
+        <groupId>org.sonatype.oss</groupId>
+        <artifactId>oss-parent</artifactId>
+        <version>7</version>
+    </parent>
 </project>

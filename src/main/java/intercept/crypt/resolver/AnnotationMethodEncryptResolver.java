@@ -10,7 +10,6 @@ import java.util.Map;
  * 有注解的方法加密处理者
  *
  * @author kamjin1996
- * @date 2019-08-01 13:11
  */
 @AllArgsConstructor
 public class AnnotationMethodEncryptResolver implements MethodEncryptResolver {

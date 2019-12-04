@@ -7,7 +7,6 @@ import intercept.crypt.executor.CryptExecutorFactory;
  * 处理 String 对象的加解密
  *
  * @author kamjin1996
- * @date 2019-08-01 11:40
  */
 public class StringCryptHandler implements CryptHandler<String> {
 

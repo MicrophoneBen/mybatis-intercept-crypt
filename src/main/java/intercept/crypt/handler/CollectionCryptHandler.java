@@ -6,10 +6,9 @@ import java.util.Collection;
 import java.util.stream.Collectors;
 
 /**
- * * 处理 Collection 对象的加解密
+ * 处理 Collection 对象的加解密
  *
  * @author kamjin1996
- * @date 2019-07-30 11:40
  */
 public class CollectionCryptHandler implements CryptHandler<Collection> {
 

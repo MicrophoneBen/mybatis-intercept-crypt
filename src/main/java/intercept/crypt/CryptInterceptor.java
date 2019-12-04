@@ -25,7 +25,6 @@ import java.util.concurrent.ConcurrentHashMap;
  * 加解密插件
  *
  * @author kamjin1996
- * @date 2019-07-30 12:49
  */
 @Intercepts(value = {@Signature(type = Executor.class, method = "update", args = {MappedStatement.class, Object.class}),
     @Signature(type = Executor.class, method = "query",

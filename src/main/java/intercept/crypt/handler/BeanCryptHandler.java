@@ -14,7 +14,6 @@ import java.util.concurrent.ConcurrentHashMap;
  * * 处理 bean 实体的加解密
  *
  * @author kamjin1996
- * @date 2019-07-31 11:40
  */
 public class BeanCryptHandler implements CryptHandler<Object> {
 
