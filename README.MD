@@ -1,5 +1,8 @@
+![Image text](https://raw.githubusercontent.com/kamjin1996/picFloder/master/png/toumingsuo.png?token=AKH3PY35MMLGIYHITDNAXAC546DVK)
+
+
 **说明：**
-简单快捷、热插拔式的数据加解密插件 支持全局数据库加密 支持字段 和基本类型参数前加注解，入库加密 出库解密
+简单快捷、热插拔式的数据加解密插件，支持全局数据库加密，支持字段 和基本类型参数前加注解，入库加密<=>出库解密
 
 **使用方式:**
 
