@@ -21,19 +21,21 @@
 
 1. spring配置文件形式：
 
-   _PS：关于参数的key，可以取任意参数，只要确保能被spring解析到即可。
+   *PS：关于参数的key，可以取任意参数，只要确保能被spring解析到即可。
    
     下面是例子：
     
-      #加密密钥（注意值长度和AES加密方式要匹配才可以）
-      dbcrypt.secretkey=123456789012345678901234
+       #加密密钥（注意值长度和AES加密方式要匹配才可以）
       
-      #加密插件是否启用
-      dbcrypt.enable=true
+       dbcrypt.secretkey=123456789012345678901234
+      
+       #加密插件是否启用
+      
+       dbcrypt.enable=true
 
 2. 新建配置类:
     
-``` @Configuration
+    @Configuration
     @Data
     public class MybatisConfig {
 
@@ -53,8 +55,7 @@
                return new Dbcrypt(AesEnum.AES192, getSecretkey(), isEnable());
      }
     }
-    
-    ```
+ 
 
 配置完毕，注意配置的AES方式，上例中为192标准，请改为自己需要的标准，并且secretKey长度要匹配
 
@@ -75,7 +76,7 @@
 在需要加密的数据模型字段上注解@CryptField，也支持在mapper入参前注解@CryptField；
 需要注意的是，暂不支持在数据模型的父类注解，入参是子类的形式
 
-附上快速开始的demo地址：
+*附上快速开始的demo地址：
 
 # 最后：
 
