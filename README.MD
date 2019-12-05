@@ -17,6 +17,17 @@
 
 + 不支持mybatis逆向生成的数据模型example类（一般项目很少会使用逆向生成工具拓展的example类，与数据模型bean的耦合性太强）
 
+## 依赖：
+   已上传至maven官方中央仓库，在pom.xml文件写入以下坐标即可:
+   
+   <dependency>
+       <groupId>com.github.kamjin1996</groupId>
+       <artifactId>mybatis-intercept-crypt</artifactId>
+       <version>2.0</version>
+   </dependency>
+   
+   此处用2.0，优化了配置方式等
+
 ## 配置方式:
 
 1. spring配置文件形式：
@@ -72,6 +83,7 @@
 需要注意的是，暂不支持在数据模型的父类注解，入参是子类的形式
 
 _附上快速开始的demo地址： 
+https://github.com/kamjin1996/cryptdemo
 
 # 最后：
 
