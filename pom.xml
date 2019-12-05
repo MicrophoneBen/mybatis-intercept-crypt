@@ -6,7 +6,7 @@
 
     <groupId>com.github.kamjin1996</groupId>
     <artifactId>mybatis-intercept-crypt</artifactId>
-    <version>1.0</version>
+    <version>2.0</version>
 
     <build>
         <plugins>
@@ -32,14 +32,27 @@
                 </configuration>
             </plugin>
 
+            <!--将依赖也打入jar包的插件 仅用于本地测试-->
+            <plugin>
+                <artifactId>maven-assembly-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>single</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <descriptorRefs>
+                        <descriptorRef>jar-with-dependencies</descriptorRef>
+                    </descriptorRefs>
+                </configuration>
+            </plugin>
+
         </plugins>
     </build>
     <dependencies>
-        <dependency>
-            <groupId>org.projectlombok</groupId>
-            <artifactId>lombok</artifactId>
-            <version>1.18.8</version>
-        </dependency>
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-api</artifactId>
