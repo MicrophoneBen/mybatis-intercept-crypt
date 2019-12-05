@@ -24,32 +24,32 @@
    *PS：关于参数的key，可以取任意参数，只要确保能被spring解析到即可。
    
     下面是例子：
-   
-      ```dbcrypt.enable=true #加密插件是否启用
-      ```dbcrypt.secretkey=123456789012345678901234 #加密密钥（注意值长度和AES加密方式要匹配才可以）
+
+        dbcrypt.enable=true #加密插件是否启用
+        dbcrypt.secretkey=123456789012345678901234 #加密密钥（注意值长度和AES加密方式要匹配才可以）
 
 2. 新建配置类:
-    
-    @Configuration
-    @Data
-    public class MybatisConfig {
 
-     @Value("${dbcrypt.secretkey}")
-     private String secretkey;
+        @Configuration
+        @Data
+        public class MybatisConfig {
 
-     @Value("${dbcrypt.enable}")
-     private boolean enable;
+            @Value("${dbcrypt.secretkey}")
+            private String secretkey;
 
-        @Bean
-        public CryptInterceptor cryptInterceptor() {
-            return new CryptInterceptor();
-     }
+            @Value("${dbcrypt.enable}")
+            private boolean enable;
 
-     @Bean
-     public Dbcrypt dbcrypt() {
-               return new Dbcrypt(AesEnum.AES192, getSecretkey(), isEnable());
-     }
-    }
+            @Bean
+            public CryptInterceptor cryptInterceptor() {
+                return new CryptInterceptor();
+            }
+
+            @Bean
+            public Dbcrypt dbcrypt() {
+                return new Dbcrypt(AesEnum.AES192, getSecretkey(), isEnable());
+            }
+        }
  
 
 配置完毕，注意配置的AES方式，上例中为192标准，请改为自己需要的标准，并且secretKey长度要匹配
@@ -75,5 +75,5 @@
 
 # 最后：
 
-对这个插件有相关疑问的，或者希望共同探讨的朋友，请联系作者qq1569558447，163邮箱：kamjin1996@163.com
+工作需求衍生的项目，对这个插件有相关疑问，或者希望共同探讨的朋友，请联系作者qq1569558447，163邮箱：kamjin1996@163.com
 
