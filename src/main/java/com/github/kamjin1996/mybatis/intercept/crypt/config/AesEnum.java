@@ -1,5 +1,9 @@
 package com.github.kamjin1996.mybatis.intercept.crypt.config;
 
+import com.github.kamjin1996.mybatis.intercept.crypt.exception.InterceptRuntimeException;
+
+import java.util.Objects;
+
 /**
  * Aes算法枚举
  *
@@ -45,5 +49,15 @@ public enum AesEnum {
         this.standSupport = standSupport;
         this.secretKeyLength = secretKeyLength;
         this.round = round;
+    }
+
+    public static AesEnum byName(String aesName) {
+        AesEnum[] values = AesEnum.values();
+        for (AesEnum aes : values) {
+            if (Objects.equals(aesName, aes.name())) {
+                return aes;
+            }
+        }
+        throw new InterceptRuntimeException("AES Standard not found [" + aesName + "]");
     }
 }

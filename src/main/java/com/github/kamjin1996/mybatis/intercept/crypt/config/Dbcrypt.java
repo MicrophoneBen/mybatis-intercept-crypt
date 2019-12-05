@@ -41,8 +41,8 @@ public class Dbcrypt {
         return aes;
     }
 
-    public void setAes(AesEnum aes) {
-        this.aes = aes;
+    public void setAes(String aes) {
+        this.aes = AesEnum.byName(aes);
     }
 
     public String getSecretkey() {
