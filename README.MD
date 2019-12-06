@@ -103,10 +103,11 @@ https://github.com/kamjin1996/cryptdemo
 工作需求衍生的项目，对这个插件有相关疑问，或者希望共同探讨的朋友，请联系作者qq1569558447，163邮箱：kamjin1996@163.com
 
 
-
+<br>
+<br>
 <div id = "englishRead"></div>
 
-#### English reading README.txt:
+<br>
 
 ## He explains:
 
