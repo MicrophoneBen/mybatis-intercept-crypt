@@ -1,11 +1,11 @@
 ![](https://ftp.bmp.ovh/imgs/2019/12/9fdfb3fbd3e6225d.jpeg)
 
 
-# 说明：
+## 说明：
 
 简单快捷、热插拔式的数据加解密插件，支持全局数据库加密 -> 入库加密<=>出库解密
 
-#### 主要有以下特点：
+### 主要有以下特点：
 
 + 轻量级，采用jar包的形式依赖，侵入极小
 
@@ -17,7 +17,7 @@
 
 
 
-## 依赖：
+### 依赖：
    已上传至maven官方中央仓库，在pom.xml文件写入以下坐标即可:
    
       <dependency>
@@ -27,7 +27,7 @@
       </dependency>
    
 
-## 配置方式:
+### 配置方式:
 
 1. spring配置文件形式：
 
@@ -65,7 +65,7 @@
 配置完毕，注意配置的AES方式，上例中为192标准，请改为自己需要的标准，并且secretKey长度要匹配。
 
 
-### 注意:
+#### 注意:
 
 假如是比较老的项目，插件的注册也可以在mybatis.xml中完成，如下：
       
@@ -76,7 +76,7 @@
 其他bean（Dbcrypt类），请在applicationContext.xml中定义，并配置AES加密标准、密钥和是否启用即可。
 
 
-## 使用方式:
+### 使用方式:
 
 在需要加密的数据模型字段上注解@CryptField，也支持在mapper入参前注解@CryptField；
 需要注意的是，暂不支持在数据模型的父类注解，入参是子类的形式。
@@ -93,7 +93,7 @@
 _附上快速开始的demo地址： 
 https://github.com/kamjin1996/cryptdemo
 
-# 最后：
+## 最后：
 
 需要注意的是，此插件并不支持mybatis逆向生成的example类（用于条件拼接查询）。
 即使example类作为条件查询的入参，如果项目中有用到example的地方，又希望加密条件中的字段，那么改为实体类的形式进行条件查询即可
@@ -101,17 +101,15 @@ https://github.com/kamjin1996/cryptdemo
 工作需求衍生的项目，对这个插件有相关疑问，或者希望共同探讨的朋友，请联系作者qq1569558447，163邮箱：kamjin1996@163.com
 
 
+-------------------------------------------------分割线-----------------------------------------------
 
+# English reading README.txt:
 
-
-
-README.txt:
-
-# He explains:
+## He explains:
 
    Simple, fast, hot plug-in data encryption and decryption plug-in, support global database encryption - > warehousing encryption < = > outbound decryption
 
-#### It has the following characteristics:
+### It has the following characteristics:
 
    + Lightweight, jar package dependent, minimal intrusion
 
@@ -122,7 +120,7 @@ README.txt:
    + It is widely applicable to any Java project adopting mybatis as Dao layer
 
 
-#### Rely on:
+### Rely on:
 
    It has been uploaded to the official central warehouse of maven, and the following coordinates can be written in pom.xml file:
 
@@ -133,7 +131,7 @@ README.txt:
       </dependency>
       
 
-## Configuration mode:
+### Configuration mode:
 
 1. Form of spring configuration file:
 
@@ -175,7 +173,7 @@ Here is an example:
    After configuration, pay attention to the AES mode of configuration. In the above example, it is 192 standard. Please change it to the standard you need, and the length of the secret key should match.
 
 
-Attention:
+#### Attention:
 
    If it is an older project, the plug-in registration can also be completed in mybatis.xml, as follows:
 
@@ -186,7 +184,7 @@ Attention:
    Other beans (dbcrypt class), please define in applicationcontext.xml, and configure AES encryption standard, key and whether to enable.
 
 
-## Usage:
+### Usage:
 
    Annotate @ cryptfield on the data model field to be encrypted, and also support to annotate @ cryptfield before the mapper enters the parameter;
 
@@ -206,7 +204,7 @@ _Attach the quick start demo address:
 https://github.com/kamjin1996/cryptdemo
 
 
-# Finally
+## Finally
 
    It should be noted that this plug-in does not support mybatis reverse generated example class (used for conditional splicing query).
 
