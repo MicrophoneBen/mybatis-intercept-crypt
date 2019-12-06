@@ -5,7 +5,7 @@
 
 ## 说明：
 
-简单快捷、热插拔式的数据加解密插件，支持全局数据库加密 -> 入库加密<=>出库解密
+简单快捷、热插拔式的数据加解密插件，支持全局数据库加密 -> 入库加密 & 出库解密
 
 ### 主要有以下特点：
 
@@ -111,7 +111,7 @@ https://github.com/kamjin1996/cryptdemo
 
 ## He explains:
 
-   Simple, fast, hot plug-in data encryption and decryption plug-in, support global database encryption - > warehousing encryption < = > outbound decryption
+   Simple, fast, hot plug-in data encryption and decryption plug-in, support global database encryption - > warehousing encryption & outbound decryption
 
 ### It has the following characteristics:
 
