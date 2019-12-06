@@ -20,13 +20,12 @@
 ## 依赖：
    已上传至maven官方中央仓库，在pom.xml文件写入以下坐标即可:
    
-   <dependency>
-       <groupId>com.github.kamjin1996</groupId>
-       <artifactId>mybatis-intercept-crypt</artifactId>
-       <version>2.0</version>
-   </dependency>
+      <dependency>
+          <groupId>com.github.kamjin1996</groupId>
+          <artifactId>mybatis-intercept-crypt</artifactId>
+          <version>2.0</version>
+      </dependency>
    
-   此处用2.0，优化了配置方式等
 
 ## 配置方式:
 
