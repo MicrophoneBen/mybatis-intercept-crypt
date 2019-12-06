@@ -148,7 +148,7 @@
       <change afterPath="$PROJECT_DIR$/target/mybatis-intercept-crypt-2.0.jar.asc" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/target/mybatis-intercept-crypt-2.0.pom" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/target/mybatis-intercept-crypt-2.0.pom.asc" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -236,7 +236,7 @@
       <workItem from="1568271357075" duration="4062000" />
       <workItem from="1575361327252" duration="573000" />
       <workItem from="1575361947154" duration="12521000" />
-      <workItem from="1575449717452" duration="24393000" />
+      <workItem from="1575449717452" duration="24657000" />
     </task>
     <task id="LOCAL-00001" summary="去掉无用日志打印">
       <created>1568195145992</created>
@@ -399,7 +399,14 @@
       <option name="project" value="LOCAL" />
       <updated>1575602343710</updated>
     </task>
-    <option name="localTasksCounter" value="24" />
+    <task id="LOCAL-00024" summary="rm .idea">
+      <created>1575602677654</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1575602677654</updated>
+    </task>
+    <option name="localTasksCounter" value="25" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -437,7 +444,8 @@
     <MESSAGE value="1、更新配置方式 更灵活，可用配置文件 也可硬编码&#10;2、去除Lombok依赖&#10;3、配置AES加解密 暂只支持AES 有时间加入其他方案，后续考虑使用抽象类 这样可以用户自己实现加密方式&#10;4、去除部分冗余代码" />
     <MESSAGE value="使用 mvn clean deploy -P release 发布项目" />
     <MESSAGE value="考虑xml配置，不在使用枚举类AES作为入参" />
-    <option name="LAST_COMMIT_MESSAGE" value="考虑xml配置，不在使用枚举类AES作为入参" />
+    <MESSAGE value="rm .idea" />
+    <option name="LAST_COMMIT_MESSAGE" value="rm .idea" />
   </component>
   <component name="WindowStateProjectService">
     <state x="574" y="130" key="#com.intellij.ide.util.MemberChooser" timestamp="1575530614533">
@@ -448,10 +456,10 @@
       <screen x="0" y="0" width="1536" height="814" />
     </state>
     <state x="615" y="303" key="#com.intellij.ide.util.projectWizard.JdkChooserPanel.MyDialog/0.0.1536.814/1920.0.1536.814@0.0.1536.814" timestamp="1575449735574" />
-    <state x="239" y="0" key="CommitChangelistDialog2" timestamp="1575602442335">
+    <state x="239" y="0" key="CommitChangelistDialog2" timestamp="1575602675583">
       <screen x="0" y="0" width="1536" height="814" />
     </state>
-    <state x="239" y="0" key="CommitChangelistDialog2/0.0.1536.814/1920.0.1536.814@0.0.1536.814" timestamp="1575602442335" />
+    <state x="239" y="0" key="CommitChangelistDialog2/0.0.1536.814/1920.0.1536.814@0.0.1536.814" timestamp="1575602675583" />
     <state x="150" y="63" key="DiffContextDialog" timestamp="1575602381438">
       <screen x="0" y="0" width="1536" height="814" />
     </state>
@@ -480,22 +488,22 @@
       <screen x="0" y="0" width="1536" height="814" />
     </state>
     <state x="309" y="43" key="SettingsEditor/0.0.1536.814/1920.0.1536.814@0.0.1536.814" timestamp="1575515664538" />
-    <state x="361" y="147" key="Vcs.Push.Dialog.v2" timestamp="1575541300636">
+    <state x="361" y="147" key="Vcs.Push.Dialog.v2" timestamp="1575602851130">
       <screen x="0" y="0" width="1536" height="814" />
     </state>
-    <state x="361" y="147" key="Vcs.Push.Dialog.v2/0.0.1536.814/1920.0.1536.814@0.0.1536.814" timestamp="1575541300636" />
-    <state x="556" y="331" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1575369708768">
+    <state x="361" y="147" key="Vcs.Push.Dialog.v2/0.0.1536.814/1920.0.1536.814@0.0.1536.814" timestamp="1575602851130" />
+    <state x="556" y="331" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1575602853762">
       <screen x="0" y="0" width="1536" height="814" />
     </state>
-    <state x="556" y="331" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1536.814/1920.0.1536.814@0.0.1536.814" timestamp="1575369708768" />
+    <state x="556" y="331" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1536.814/1920.0.1536.814@0.0.1536.814" timestamp="1575602853762" />
     <state x="748" y="279" width="753" height="522" key="find.popup" timestamp="1575540354526">
       <screen x="0" y="0" width="1536" height="814" />
     </state>
     <state x="748" y="279" width="753" height="522" key="find.popup/0.0.1536.814/1920.0.1536.814@0.0.1536.814" timestamp="1575540354526" />
-    <state x="414" y="216" key="git4idea.merge.GitPullDialog" timestamp="1575540220995">
+    <state x="414" y="216" key="git4idea.merge.GitPullDialog" timestamp="1575602682799">
       <screen x="0" y="0" width="1536" height="814" />
     </state>
-    <state x="414" y="216" key="git4idea.merge.GitPullDialog/0.0.1536.814/1920.0.1536.814@0.0.1536.814" timestamp="1575540220995" />
+    <state x="414" y="216" key="git4idea.merge.GitPullDialog/0.0.1536.814/1920.0.1536.814@0.0.1536.814" timestamp="1575602682799" />
     <state x="2" y="120" key="new project wizard" timestamp="1575453620162">
       <screen x="0" y="0" width="1536" height="814" />
     </state>
