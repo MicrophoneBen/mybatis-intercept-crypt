@@ -7,6 +7,8 @@
 
 简单快捷、热插拔式的数据加解密插件，支持全局数据库加密 -> 入库加密 & 出库解密
 
+<br>
+
 ### 主要有以下特点：
 
 + 轻量级，采用jar包的形式依赖，侵入极小
@@ -72,7 +74,7 @@
 假如是比较老的项目，插件的注册也可以在mybatis.xml中完成，如下：
       
         <plugins>
-            <plugin interceptor="intercept.crypt.CryptInterceptor"/>
+            <plugin interceptor="com.github.kamjin1996.mybatis.intercept.crypt.CryptInterceptor"/>
         </plugins>
         
 其他bean（Dbcrypt类），请在applicationContext.xml中定义，并配置AES加密标准、密钥和是否启用即可。
@@ -182,7 +184,7 @@ Here is an example:
    If it is an older project, the plug-in registration can also be completed in mybatis.xml, as follows:
 
       <plugins>
-         <plugin interceptor="intercept.crypt.CryptInterceptor"/>
+         <plugin interceptor="com.github.kamjin1996.mybatis.intercept.crypt.CryptInterceptor"/>
       </plugins>
 
    Other beans (dbcrypt class), please define in applicationcontext.xml, and configure AES encryption standard, key and whether to enable.
