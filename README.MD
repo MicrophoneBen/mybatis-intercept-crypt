@@ -95,9 +95,122 @@ https://github.com/kamjin1996/cryptdemo
 
 # 最后：
 
-局限性：
-
-当然也有局限性，插件不支持mybatis逆向生成的example类。（一种条件查询的辅助类）
+需要注意的是，此插件并不支持mybatis逆向生成的example类（用于条件拼接查询）。
+即使example类作为条件查询的入参，如果项目中有用到example的地方，又希望加密条件中的字段，那么改为实体类的形式进行条件查询即可
 
 工作需求衍生的项目，对这个插件有相关疑问，或者希望共同探讨的朋友，请联系作者qq1569558447，163邮箱：kamjin1996@163.com
+
+
+
+
+
+
+README.txt:
+
+# He explains:
+
+   Simple, fast, hot plug-in data encryption and decryption plug-in, support global database encryption - > warehousing encryption < = > outbound decryption
+
+#### It has the following characteristics:
+
+   + Lightweight, jar package dependent, minimal intrusion
+
+   + It is simple and flexible to use. You can encrypt and decrypt the target only by adding @ cryptfield annotation on the data model field to be encrypted or before the method parameter of mapperinterface
+
+   + The configuration mode is simple, just configure the key and encryption mode
+
+   + It is widely applicable to any Java project adopting mybatis as Dao layer
+
+
+#### Rely on:
+
+   It has been uploaded to the official central warehouse of maven, and the following coordinates can be written in pom.xml file:
+
+      <dependency>
+          <groupId>com.github.kamjin1996</groupId>
+          <artifactId>mybatis-intercept-crypt</artifactId>
+          <version>2.0</version>
+      </dependency>
+      
+
+## Configuration mode:
+
+1. Form of spring configuration file:
+
+   _PS: as for the key of the parameter, you can take any parameter as long as it can be parsed by spring.
+
+
+Here is an example:
+
+
+      dbcrypt. Enable = true #whether the encryption plug-in is enabled
+
+      dbcrypt.secretkey=123456789012345678901234 #encryption key (note that the value length and AES encryption method must match)
+
+2. Create a new configuration class:
+
+        @Configuration
+        @Data
+        public class MybatisConfig {
+
+            @Value("${dbcrypt.secretkey}")
+            private String secretkey;
+
+            @Value("${dbcrypt.enable}")
+            private boolean enable;
+
+            @Bean
+            public CryptInterceptor cryptInterceptor() {
+                return new CryptInterceptor();
+            }
+
+            @Bean
+            public Dbcrypt dbcrypt() {
+                return new Dbcrypt(AesEnum.AES192, getSecretkey(), isEnable());
+            }
+        }
+
+
+
+   After configuration, pay attention to the AES mode of configuration. In the above example, it is 192 standard. Please change it to the standard you need, and the length of the secret key should match.
+
+
+Attention:
+
+   If it is an older project, the plug-in registration can also be completed in mybatis.xml, as follows:
+
+      <plugins>
+         <plugin interceptor="intercept.crypt.CryptInterceptor"/>
+      </plugins>
+
+   Other beans (dbcrypt class), please define in applicationcontext.xml, and configure AES encryption standard, key and whether to enable.
+
+
+## Usage:
+
+   Annotate @ cryptfield on the data model field to be encrypted, and also support to annotate @ cryptfield before the mapper enters the parameter;
+
+   It should be noted that the parent class annotation in the data model is not supported at present, and the input parameter is in the form of a child class.
+
++ Use on field
+
+      @CryptField private String password;
+
++ Mapper input
+
+      User selectByMobile(@CryptField @Param("mobile") String mobile);
+
+
+_Attach the quick start demo address:
+
+https://github.com/kamjin1996/cryptdemo
+
+
+# Finally
+
+   It should be noted that this plug-in does not support mybatis reverse generated example class (used for conditional splicing query).
+
+   Even if the example class is used as the input parameter of the condition query, if you want to encrypt the fields in the condition when you use the example class in the project, you can query the condition in the form of entity class instead
+
+   If you have any questions about this plug-in or want to discuss it together, please contact the author qq1569558447163 email: kamjin1996@163.com
 
