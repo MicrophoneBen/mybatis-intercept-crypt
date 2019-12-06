@@ -212,5 +212,5 @@ https://github.com/kamjin1996/cryptdemo
 
    Even if the example class is used as the input parameter of the condition query, if you want to encrypt the fields in the condition when you use the example class in the project, you can query the condition in the form of entity class instead
 
-   If you have any questions about this plug-in or want to discuss it together, please contact the author qq1569558447163 email: kamjin1996@163.com
+   If you have any questions about this plug-in or want to discuss it together, please contact the author qq1569558447,163 email: kamjin1996@163.com
 
