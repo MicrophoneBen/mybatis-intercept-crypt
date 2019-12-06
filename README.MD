@@ -1,7 +1,7 @@
 ![](https://ftp.bmp.ovh/imgs/2019/12/9fdfb3fbd3e6225d.jpeg)
 
 
-## [Click here to read](https://github.com/kamjin1996/mybatis-intercept-crypt/blob/master/README.MD#english-reading-readmetxt)
+## <a href="#englishRead">Click here to read</a>
 
 ## 说明：
 
@@ -104,6 +104,7 @@ https://github.com/kamjin1996/cryptdemo
 
 
 
+<div id = "englishRead"></div>
 
 #### English reading README.txt:
 
