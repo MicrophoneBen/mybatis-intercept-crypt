@@ -122,7 +122,7 @@ https://github.com/kamjin1996/cryptdemo
    + It is widely applicable to any Java project adopting mybatis as Dao layer
 
 
-### Rely on:
+### Dependency:
 
    It has been uploaded to the official central warehouse of maven, and the following coordinates can be written in pom.xml file:
 
