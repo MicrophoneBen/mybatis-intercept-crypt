@@ -133,9 +133,9 @@ public class CryptInterceptor implements Interceptor {
                             sourceObjFieldId.set(sourceObj, cloneObjFieldIdVal);
                         }
                     }
-                }
-                if (isDeal) {
-                    clearObjMap();
+                    if (isDeal) {
+                        removeObjInMap(sourceObj);
+                    }
                 }
             } catch (Exception e) {
                 log.error("fix bean id the method running failed.", e);
@@ -143,8 +143,8 @@ public class CryptInterceptor implements Interceptor {
         }
     }
 
-    private static void clearObjMap() {
-        OLD_AND_NEW_OBJ_MAP.clear();
+    private static void removeObjInMap(Object key) {
+        OLD_AND_NEW_OBJ_MAP.remove(key);
     }
 
 }
