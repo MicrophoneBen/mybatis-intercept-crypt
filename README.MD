@@ -5,7 +5,7 @@
 
 ## 说明：
 
-简单快捷、热插拔式的数据加解密插件，支持全局数据库加密 -> 入库加密 & 出库解密
+简单快捷的数据加解密插件，支持全局数据库加密 -> 入库加密 & 出库解密
 
 <br>
 
@@ -102,7 +102,7 @@ https://github.com/kamjin1996/cryptdemo
 需要注意的是，此插件并不支持mybatis逆向生成的example类（用于条件拼接查询）。
 即使example类作为条件查询的入参，如果项目中有用到example的地方，又希望加密条件中的字段，那么改为实体类的形式进行条件查询即可
 
-工作需求衍生的项目，对这个插件有相关疑问，或者希望共同探讨的朋友，请联系作者qq1569558447，163邮箱：kamjin1996@163.com
+共同探讨的朋友联系qq1569558447，163邮箱：kamjin1996@163.com
 
 
 <br>
@@ -113,7 +113,7 @@ https://github.com/kamjin1996/cryptdemo
 
 ## He explains:
 
-   Simple, fast, hot plug-in data encryption and decryption plug-in, support global database encryption - > warehousing encryption & outbound decryption
+   Simple, fast, support global database encryption - > warehousing encryption & outbound decryption
 
 ### It has the following characteristics:
 
